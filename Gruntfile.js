@@ -212,7 +212,4 @@ module.exports = function(grunt) {
 	// Clean generated images
 	grunt.registerTask( 'clean', [ 'clean' ] );
 
-	// Generate plantuml
-	grunt.registerTask( 'plantuml', [ 'plantuml' ] );
-
 };
