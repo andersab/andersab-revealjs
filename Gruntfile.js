@@ -163,9 +163,7 @@ module.exports = function(grunt) {
 		},
 
 		clean: {
-			clean : {
-				src : [ "images/uml/*.png~"
-				]
+			clean : ["images/uml/**/*.png" ]
 			}
 		}
 
@@ -208,8 +206,5 @@ module.exports = function(grunt) {
 
 	// Run tests
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
-
-	// Clean generated images
-	grunt.registerTask( 'clean', [ 'clean' ] );
 
 };
