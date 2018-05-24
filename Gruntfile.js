@@ -144,10 +144,13 @@ module.exports = function(grunt) {
 			options: {
 				livereload: true
 			},
-            plantuml: {
-                files: [ '**/*.puml', '**/*.iuml' ],
-                tasks: 'plantuml'
-            }
+			plantuml: {
+				files: [ 
+					'uml/*.puml', 
+					'uml/*.iuml' 
+				],
+				tasks: 'plantuml'
+			}
 		},
 
 		retire: {
@@ -156,15 +159,14 @@ module.exports = function(grunt) {
 		},
 
 		plantuml: {
-			all: {
+			plantuml: {
 				src: ['uml/*.puml', 'uml/*.iuml'],
 				dest: 'images/uml'
 			}
 		},
 
 		clean: {
-			clean : ["images/uml/**/*.png" ]
-			}
+			plantuml : ['images/uml/**/*.png']
 		}
 
 	});
@@ -184,7 +186,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-plantuml' );
 	
 	// Default task
-	grunt.registerTask( 'default', [ 'css', 'js' ] );
+	grunt.registerTask( 'default', [ 'css', 'js', 'plantuml' ] );
 
 	// JS task
 	grunt.registerTask( 'js', [ 'jshint', 'uglify', 'qunit' ] );
@@ -202,9 +204,9 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
 
 	// Serve presentation locally
-	grunt.registerTask( 'serve', [ 'connect', 'watch', 'plantuml' ] );
+	grunt.registerTask( 'serve', [ 'plantuml', 'connect', 'watch' ] );
 
 	// Run tests
-	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
+	grunt.registerTask( 'test', [ 'jshint', 'qunit', 'plantuml' ] );
 
 };
